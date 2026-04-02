@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: financial-dashboard
+
+  # ── H2 In-Memory Database (default for development) ──
+  datasource:
+    url: jdbc:h2:mem:fintech_dashboard;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  # ── H2 Console (access at http://localhost:8080/h2-console) ──
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # ── JPA / Hibernate ──
+  jpa:
+    hibernate:
+      ddl-auto: create-drop     # recreate tables on each restart (dev mode)
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  # ── Jackson ──
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+# ── JWT Configuration ──
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    expiration-ms: 86400000   # 24 hours
+
+# ── Swagger / OpenAPI ──
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
+# ── Logging ──
+logging:
+  level:
+    com.fintech.dashboard: DEBUG
+    org.springframework.security: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

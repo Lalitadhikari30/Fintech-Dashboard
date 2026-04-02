@@ -1,0 +1,18 @@
+# MySQL profile — activate with: mvn spring-boot:run -Dspring-boot.run.profiles=mysql
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/fintech_dashboard?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  h2:
+    console:
+      enabled: false
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
