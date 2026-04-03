@@ -28,8 +28,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/dashboard")
 @RequiredArgsConstructor
-@PreAuthorize("hasAnyRole('ANALYST', 'ADMIN')")
-@Tag(name = "Dashboard", description = "Analytics and summary endpoints (ANALYST/ADMIN)")
+@PreAuthorize("hasAnyRole('VIEWER', 'ANALYST', 'ADMIN')")
+@Tag(name = "Dashboard", description = "Analytics and summary endpoints (All authenticated users)")
 public class DashboardController {
 
     private final DashboardService dashboardService;

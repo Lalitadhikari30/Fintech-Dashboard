@@ -60,8 +60,8 @@ public class SecurityConfig {
                 .requestMatchers("/h2-console/**").permitAll()
                 // User management — ADMIN only
                 .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
-                // Dashboard — ANALYST and ADMIN
-                .requestMatchers("/api/v1/dashboard/**").hasAnyRole("ANALYST", "ADMIN")
+                // Dashboard — all authenticated users (VIEWER can view dashboard data)
+                .requestMatchers("/api/v1/dashboard/**").authenticated()
                 // Records: read is open to all authenticated, write is ADMIN only
                 .requestMatchers(HttpMethod.GET, "/api/v1/records/**").authenticated()
                 .requestMatchers(HttpMethod.POST, "/api/v1/records/**").hasRole("ADMIN")
