@@ -11,8 +11,7 @@ A production-grade backend system for a **Finance Dashboard** built with Java Sp
 | **Spring Security** | Authentication & authorization |
 | **Spring Data JPA** | Data access layer |
 | **JWT (jjwt 0.12.5)** | Stateless authentication tokens |
-| **H2 Database** | In-memory database (default/dev) |
-| **MySQL** | Production database (optional profile) |
+| **MySQL 8+** | Primary Database |
 | **Swagger/OpenAPI 3** | API documentation |
 | **Lombok** | Boilerplate reduction |
 | **BCrypt** | Password hashing |
@@ -47,21 +46,17 @@ src/main/java/com/fintech/dashboard/
 - Maven 3.6+
 - (Optional) MySQL 8+ for production profile
 
-### Run with H2 (Default — No Setup Required)
+### Database Setup
+
+Ensure MySQL is running on `localhost:3306`. Create the database credentials as configured in `application.yml` (default `root` / `Lalit9968@`). Spring Boot will automatically create the `fintech_dashboard` database and tables upon startup.
+
+### Run Application
 ```bash
 cd backend
 mvn spring-boot:run
 ```
 
-The application starts at `http://localhost:8080` with an in-memory H2 database.
-
-### Run with MySQL (Production Profile)
-```bash
-cd backend
-mvn spring-boot:run -Dspring-boot.run.profiles=mysql
-```
-
-> **Note:** Ensure MySQL is running on `localhost:3306`. The database `fintech_dashboard` will be created automatically.
+The application starts at `http://localhost:8080`.
 
 ### Default Admin Credentials
 On first startup, a default admin user is seeded:
