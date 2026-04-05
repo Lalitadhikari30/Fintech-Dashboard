@@ -9,7 +9,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/fintech_dashboard?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
-    password: Lalit9968@
+    password: ${MYSQL_PASSWORD:root}    # Use environment variable MYSQL_PASSWORD, defaults to root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   # ── JPA / Hibernate ──
